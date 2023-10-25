@@ -12,7 +12,7 @@ function App() {
   return (
     <div>
       <Header />
-      <Form onSaveData={saveDatas}/>
+      <Form onSaveDatas={saveDatas}/>
     </div>
   )
 }
