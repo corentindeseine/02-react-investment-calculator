@@ -15,7 +15,7 @@ const Form = (props) => {
       [identifier]: newValue,
     });
 
-    props.onSaveData(formDatas);
+    props.onSaveDatas(formDatas);
   };
 
   return (
