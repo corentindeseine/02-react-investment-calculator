@@ -4,7 +4,7 @@ const Form = (props) => {
   const [formDatas, setFormDatas] = useState({
     investment: 1000,
     annualInvestment: 200,
-    expectedReturn: 5,
+    expectedReturn: 5.0,
     duration: 12,
   });
 
@@ -12,11 +12,11 @@ const Form = (props) => {
   const inputChangeHandler = (identifier, newValue) => {
     setFormDatas({
       ...formDatas,
-      [identifier]: newValue,
+      [identifier]: identifier === "expectedReturn" ? newValue : parseInt(newValue),
     });
-
-    props.onSaveDatas(formDatas);
   };
+
+  props.onSaveDatas(formDatas);
 
   return (
     <section id="user-input">
