@@ -1,22 +1,6 @@
 import React, {useState} from "react";
 
-const Form = (props) => {
-  const [formDatas, setFormDatas] = useState({
-    investment: 1000,
-    annualInvestment: 200,
-    expectedReturn: 5.0,
-    duration: 12,
-  });
-
-
-  const inputChangeHandler = (identifier, newValue) => {
-    setFormDatas({
-      ...formDatas,
-      [identifier]: identifier === "expectedReturn" ? newValue : parseInt(newValue),
-    });
-  };
-
-  props.onSaveDatas(formDatas);
+const Form = ({onChange, formDatas}) => {
 
   return (
     <section id="user-input">
@@ -26,8 +10,8 @@ const Form = (props) => {
           <input
             type="number"
             min='0'
-            value={formDatas.investment}
-            onChange={ (event) => inputChangeHandler('investment', event.target.value) }
+            value={formDatas.initialInvestment}
+            onChange={ (event) => onChange('initialInvestment', event.target.value) }
           />
         </p>
         <p>
@@ -36,7 +20,7 @@ const Form = (props) => {
             type="number"
             min='1'
             value={formDatas.annualInvestment}
-            onChange={ (event) => inputChangeHandler('annualInvestment', event.target.value) }
+            onChange={ (event) => onChange('annualInvestment', event.target.value) }
           />
         </p>
       </div>
@@ -48,7 +32,7 @@ const Form = (props) => {
             step="0.1"
             min='0.1'
             value={formDatas.expectedReturn}
-            onChange={ (event) => inputChangeHandler('expectedReturn', event.target.value) }
+            onChange={ (event) => onChange('expectedReturn', event.target.value) }
           />
         </p>
         <p>
@@ -58,7 +42,7 @@ const Form = (props) => {
             value={formDatas.duration}
             min="1"
             step="1"
-            onChange={ (event) => inputChangeHandler('duration', event.target.value) }
+            onChange={ (event) => onChange('duration', event.target.value) }
           />
         </p>
       </div>
